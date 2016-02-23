@@ -16,3 +16,6 @@ You'll need [Rust](https://www.rust-lang.org/) 1.6.0.
 
 - pants
 
+--- 
+
+© 2016 Dave Parfitt
