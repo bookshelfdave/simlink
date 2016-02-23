@@ -23,6 +23,26 @@ fn link(existing_file: &str, new_link:&str) -> () {
     };
 }
 
+fn repoint_existing_link(sa: Path, sb: Path) -> () {
+    let meta_a = sa.metadata();
+    let meta_b = sb.metadata();
+    let metas = (sa.metadata(), sb.metadata());
+    match metas {
+        (Ok(a), Ok(b) => {
+            let links = (a.is_symlink(), b.is_sylink());
+            match links {
+                (true, false) => link(b.to_str().unwrap(), a.to_str().unwrap()),
+                (false, true) => link(a.to_str().unwrap(), b.to_str().unwrap()),
+                (true, true) => exit_for_humans("Both paths are symlinks!", -1),
+                (false, false) => exit_for_humans("Both paths are files!", -1)
+            };
+        },
+        (Err(a), Ok(b)) => exit_for_humans("Failed to get metadata for <A>", -1),
+        (Ok(a), Err(b)) => exit_for_humans("Failed to get metadata for <B>", -1),
+        (Err(a), Err(b)) => exit_for_humans("Failed to get metadata for <A> and <B>", -1)
+    };
+}
+
 fn exit_for_humans(msg: &str, status: i32) -> () {
     // ie, don't print panic() garbage
     println!("{}", msg);
@@ -66,7 +86,7 @@ fn main() {
     match paths {
         (true, false) => link(sa, sb),
         (false, true) => link(sb, sa),
-        (true, true) => exit_for_humans("Both paths exist!", -1),
+        (true, true) => repoint_existing_link(path_a, path_b),
         (false, false) => exit_for_humans("Neither path exists", -1)
     };
 
