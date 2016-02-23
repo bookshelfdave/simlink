@@ -1,6 +1,6 @@
 # simlink
 
-Do you remember the order of args to make a symlink? I unually don't! 
+Do you remember the order of args to make a symlink? I usually don't! 
 
 Simlink doesn't care which order you specify arguments! All you need is a file/directory that exists, and one that doesn't (yet!). This is going to [change the world](http://www.zombo.com/)!!
 
