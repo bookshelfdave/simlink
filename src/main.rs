@@ -3,6 +3,8 @@ use clap::{Arg, App};
 use std::path::Path;
 use std::process::Command;
 
+const VERSION: &'static str = env!("CARGO_PKG_VERSION");
+
 fn link(existing_file: &str, new_link:&str) -> () {
     //println!("Linking {} to {}", existing_file, new_link);
 
@@ -30,7 +32,7 @@ fn exit_for_humans(msg: &str, status: i32) -> () {
 fn main() {
 
     let matches = App::new("simlink")
-                      .version("1.0")
+                      .version(VERSION)
                       .about("ln -s, meow/miaow")
                       .arg(Arg::with_name("A")
                                .help("Maybe a file, maybe a link you want to make?")
