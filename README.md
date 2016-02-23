@@ -9,6 +9,10 @@ Simlink doesn't care which order you specify arguments! All you need is a file/d
 
 You'll need [Rust](https://www.rust-lang.org/) 1.6.0.
 
+	cargo install simlink
+
+or if you want to build it locally:
+
 	cargo build
 	./target/debug/simlink some_path some_other_path
 	
