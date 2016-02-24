@@ -8,13 +8,13 @@ const VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 fn do_link(existing_file: &str, new_link:&str, force:bool) -> () {
     //println!("Linking {} to {}", existing_file, new_link);
-    
-    let mut vec = vec!["-s"];
-    if force { vec.push("-f"); }
+
+    let mut params = vec!["-s"];
+    if force { params.push("-f"); }
 
 
     let status = Command::new("ln")
-        .args(&vec[..])
+        .args(&params[..])
         .arg(existing_file)
         .arg(new_link)
         .status().unwrap_or_else(|e| {
@@ -103,8 +103,8 @@ fn main() {
     match paths {
         (true, false, _) => link(sa, sb),
         (false, true, _) => link(sb, sa),
-        (true, true, true) => repoint_existing_link(path_a, path_b), 
-        (true, true, false) => exit_for_humans("Both paths exist (use -f to override)", -1),        
+        (true, true, true) => repoint_existing_link(path_a, path_b),
+        (true, true, false) => exit_for_humans("Both paths exist (use -f to override)", -1),
         (false, false, _) => exit_for_humans("Neither path exists", -1)
     };
 
