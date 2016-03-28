@@ -26,7 +26,10 @@ or if you want to build it locally:
 	
 ### Are you serious?
 
-- pants
+- no, not really.
+- keep in mind that most Unix utils take "the existing file" first
+	
+        ln -s /some/existing/file some_new_file
 
 --- 
 
