@@ -11,10 +11,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Build
-        run: cargo build --release --verbose
       - name: Run tests
         run: cargo test --verbose
+      - name: Build
+        run: cargo build --release --verbose
       - name: Copy bin
         run: mkdir ./out && cp ./target/release/simlink ./out
       - name: Compress
