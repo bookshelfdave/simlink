@@ -9,4 +9,4 @@ homepage = "https://github.com/metadave/simlink"
 repository = "https://github.com/metadave/simlink"
 
 [dependencies]
-clap = "2.1.1"
+clap = "2.3.3"
