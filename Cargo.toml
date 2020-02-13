@@ -10,3 +10,8 @@ repository = "https://github.com/metadave/simlink"
 
 [dependencies]
 clap = "2.3.3"
+
+[dev-dependencies]
+assert_cmd = "0.12"
+predicates = "1.0.2"
+tempfile = "3.1.0"
