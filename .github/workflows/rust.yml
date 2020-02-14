@@ -22,7 +22,7 @@ jobs:
       - name: Upload build artifact
         uses: actions/upload-artifact@v1
         with:
-          name: simlink-linux-build-${{ github.ref }}
+          name: simlink-linux-build-${{ github.sha }}
           path: simlink-linux-amd64.tgz
   build-darwin:
     name: Build MacOS binary
@@ -41,7 +41,7 @@ jobs:
       - name: Upload build artifact
         uses: actions/upload-artifact@v1
         with:
-          name: simlink-darwin-build-${{ github.ref }}
+          name: simlink-darwin-build-${{ github.sha }}
           path: simlink-darwin-amd64.tgz
   create-release:
     name: Create release
@@ -54,8 +54,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          tag_name: ${{ github.sha }}
+          release_name: Release ${{ github.sha }}
           draft: false
           prerelease: false
   upload-linux:
@@ -66,7 +66,7 @@ jobs:
       - name: Download build artifact for Linux
         uses: actions/download-artifact@v1
         with:
-          name: simlink-linux-build-${{ github.ref }}
+          name: simlink-linux-build-${{ github.sha }}
       - name: Upload Linux
         id: upload-release-asset 
         uses: actions/upload-release-asset@v1
@@ -85,7 +85,7 @@ jobs:
       - name: Download build artifact for Darwin
         uses: actions/download-artifact@v1
         with:
-          name: simlink-darwin-build-${{ github.ref }}
+          name: simlink-darwin-build-${{ github.sha }}
       - name: Upload Darwin
         id: upload-release-asset 
         uses: actions/upload-release-asset@v1
