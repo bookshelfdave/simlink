@@ -37,7 +37,7 @@ jobs:
       - name: Copy bin
         run: mkdir ./simlink-darwin-amd64 && cp ./target/release/simlink ./simlink-darwin-amd64/simlink
       - name: Compress
-        run: tar cvzf simlink-linux-darwin.tgz ./simlink-darwin-amd64 
+        run: tar cvzf simlink-darwin-darwin.tgz ./simlink-darwin-amd64 
       - name: Upload build artifact
         uses: actions/upload-artifact@v1
         with:
