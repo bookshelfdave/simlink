@@ -3,7 +3,7 @@ on:
     tags:
     - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
-name: Upload Release Asset
+name: Build Linux and Darwin binaries
 jobs:
   build-rust:
     name: Build Linux binary
@@ -37,7 +37,7 @@ jobs:
       - name: Copy bin
         run: mkdir ./simlink-darwin-amd64 && cp ./target/release/simlink ./simlink-darwin-amd64/simlink
       - name: Compress
-        run: tar cvzf simlink-darwin-darwin.tgz ./simlink-darwin-amd64 
+        run: tar cvzf simlink-darwin-amd64.tgz ./simlink-darwin-amd64 
       - name: Upload build artifact
         uses: actions/upload-artifact@v1
         with:
