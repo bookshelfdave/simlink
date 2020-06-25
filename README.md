@@ -7,7 +7,7 @@ Simlink is just a wrapper around `ln -s`, but it doesn't care which order you sp
 		
 ### Building
 
-You'll need [Rust](https://www.rust-lang.org/) 1.6.0.
+You'll need [Rust](https://www.rust-lang.org/) >= 1.6.0.
 
 	cargo install simlink
 
